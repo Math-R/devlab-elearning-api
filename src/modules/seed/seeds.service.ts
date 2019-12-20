@@ -52,7 +52,18 @@ export class SeedsService {
     user.admin = true;
     user.level = await this.levelRepository.findOne({ where: { id: 1 } });
     await user.save();
+
+    const user2 = new User();
+    user2.email = `admin@devlab.com`;
+    user2.username = 'Admin devlab';
+    user2.description = 'Hi Im addmin devlab';
+    user2.password = 'password';
+    user2.admin = true;
+    user2.level = await this.levelRepository.findOne({ where: { id: 1 } });
+    await user2.save();
+
     users.push(user);
+    users.push(user2);
     return users;
   }
 
