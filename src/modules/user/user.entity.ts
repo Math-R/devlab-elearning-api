@@ -6,7 +6,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToOne,
-  JoinColumn, OneToMany,
+  JoinColumn, OneToMany, ManyToOne,
 } from 'typeorm';
 import { Exclude } from 'class-transformer';
 import { File } from '../files/file.entity';
@@ -24,7 +24,7 @@ export class User extends BaseEntity {
   @Column({ length: 255 })
   username: string;
 
-  @OneToOne(type => Level, {eager : true})
+  @ManyToOne(type => Level, level => level.users)
   @JoinColumn()
   level: Level;
 

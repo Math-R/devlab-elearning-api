@@ -26,8 +26,8 @@ export class UserService {
     });
   }
 
-  async findId(id: number, relation?: []) {
-    return this.userRepository.findOne({ where: { id } });
+  async findId(id: number, relation?: [string]) {
+    return this.userRepository.findOne({ where: { id }, relations : relation });
   }
 
   async findEmail(email: string) {

@@ -40,6 +40,7 @@ export class SeedsService {
       user.username = 'username' + i;
       user.description = this.lorem();
       user.password = 'password';
+      user.level = await this.levelRepository.findOne({ where: { id: 1 } });
       await user.save();
       users.push(user);
     }
@@ -48,6 +49,7 @@ export class SeedsService {
     user.username = 'glrd';
     user.description = 'Hi Im glrd';
     user.password = 'password';
+    user.level = await this.levelRepository.findOne({ where: { id: 1 } });
     await user.save();
     users.push(user);
     return users;

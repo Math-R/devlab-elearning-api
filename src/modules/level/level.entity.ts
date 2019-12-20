@@ -5,7 +5,7 @@ import {
   BaseEntity,
   CreateDateColumn,
   UpdateDateColumn,
-  JoinColumn, ManyToOne,
+  JoinColumn, ManyToOne, OneToMany,
 } from 'typeorm';
 import { User } from '../user/user.entity';
 
@@ -21,6 +21,9 @@ export class Level extends BaseEntity {
 
   @Column()
   name: string;
+
+  @OneToMany(type => User, user => user.level)
+  users: User[];
 
   @CreateDateColumn()
   createdAt: Date;
