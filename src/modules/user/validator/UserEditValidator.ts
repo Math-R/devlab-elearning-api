@@ -1,7 +1,7 @@
 import { IsEmail, IsNotEmpty } from 'class-validator';
 import { ApiModelProperty } from '@nestjs/swagger';
 
-export class CreateUserValidator {
+export class UserEditValidator {
   @ApiModelProperty({
     required: true,
     type: 'string',
@@ -14,16 +14,7 @@ export class CreateUserValidator {
     type: 'string',
   })
   @IsNotEmpty()
-  password: string;
-
-  @ApiModelProperty({
-    required: true,
-    type: 'string',
-  })
-  @IsNotEmpty()
   username: string;
 
   description: string;
-
-  type: string;
 }

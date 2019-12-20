@@ -4,7 +4,9 @@ import * as crypto from 'crypto';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { RegisterPayload } from '../auth/validator/register.payload';
-import { CreateUserValidator, UserEditValidator } from './validator/UserValidator';
+import { CreateUserValidator } from './validator/UserValidator';
+import { UserEditValidator } from './validator/UserEditValidator';
+
 
 @Injectable()
 export class UserService {

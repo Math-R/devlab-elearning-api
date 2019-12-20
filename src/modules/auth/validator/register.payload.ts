@@ -4,20 +4,26 @@ import { IsEmail, IsNotEmpty, MinLength } from 'class-validator';
 export class RegisterPayload {
   @ApiModelProperty({
     required: true,
+    type: 'string',
   })
-
+  @IsEmail()
   email: string;
 
   @ApiModelProperty({
     required: true,
+    type: 'string',
   })
   @IsNotEmpty()
-  name: string;
+  password: string;
 
   @ApiModelProperty({
     required: true,
+    type: 'string',
   })
   @IsNotEmpty()
-  @MinLength(5)
-  password: string;
+  username: string;
+
+  description: string;
+
+  type: string;
 }

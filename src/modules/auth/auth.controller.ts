@@ -44,7 +44,7 @@ export class AuthController {
   @ApiResponse({ status: 201, description: 'Successful Registration' })
   @ApiResponse({ status: 400, description: 'Bad Request' })
   @ApiResponse({ status: 401, description: 'Unauthorized' })
-  async register(@Res() res, @Body() body: CreateUserValidator): Promise<any> {
+  async register(@Res() res, @Body() body: RegisterPayload): Promise<any> {
     const user = await this.userService.register(body);
     const token = await this.authService.login(user);
     delete user.password;
