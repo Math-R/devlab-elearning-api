@@ -16,7 +16,7 @@ export class UserAdminController {
   @UseGuards(AuthGuard('jwt'), IsAdminGuard)
   @Get('')
   async index(@Res()  res) {
-    const users = await this.userService.index();
+    const users = await this.userService.index(['level', 'files']);
     return res.send({ data: UserRessource.collection(users) });
   }
 }

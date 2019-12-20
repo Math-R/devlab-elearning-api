@@ -11,6 +11,7 @@ export class UserRessource extends Ressource {
         username: user.username,
         description: user.description,
         email: user.email,
+        level: LevelRessource.toArray(user.level),
       };
     });
   }

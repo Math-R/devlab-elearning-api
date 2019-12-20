@@ -13,9 +13,11 @@ export class UserService {
     private readonly userRepository: Repository<User>,
   ) {
   }
-  async index() {
+
+  async index(relation?) {
     return this.userRepository.find({
       cache: true,
+      relations: relation,
     });
   }
 
@@ -27,7 +29,7 @@ export class UserService {
   }
 
   async findId(id: number, relation?: [string]) {
-    return this.userRepository.findOne({ where: { id }, relations : relation });
+    return this.userRepository.findOne({ where: { id }, relations: relation });
   }
 
   async findEmail(email: string) {
