@@ -24,8 +24,8 @@ export class User extends BaseEntity {
   @Column({ length: 255 })
   username: string;
 
-  @OneToOne(type => Level)
-  @JoinColumn({name: 'fk_level_id'})
+  @OneToOne(type => Level, {eager : true})
+  @JoinColumn()
   level: Level;
 
   @Column({ length: 1000, nullable: true })

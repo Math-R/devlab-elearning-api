@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
-import { AdminModule } from './modules/admin/admin.module';
 import { ConfigModule } from './modules/config/config.module';
 import { TypeOrmModule, TypeOrmModuleAsyncOptions } from '@nestjs/typeorm';
 import { ConfigService } from './modules/config/config.service';
 import { FilesModule } from './modules/files/files.module';
 import { LevelModule } from './modules/level/level.module';
+import { SeedModule } from './modules/seed/seed.module';
 
 @Module({
   imports: [
@@ -37,9 +37,9 @@ import { LevelModule } from './modules/level/level.module';
     }),
     AuthModule,
     UserModule,
-    AdminModule,
     FilesModule,
     LevelModule,
+    SeedModule,
   ],
 })
 export class AppModule {
