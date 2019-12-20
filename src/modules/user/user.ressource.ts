@@ -16,7 +16,6 @@ export class UserRessource extends Ressource {
   }
 
   public static toArray(entities: User) {
-    console.log(entities);
     return {
       id: entities.id,
       username: entities.username,

@@ -4,7 +4,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { ConfigModule } from './modules/config/config.module';
 import { TypeOrmModule, TypeOrmModuleAsyncOptions } from '@nestjs/typeorm';
 import { ConfigService } from './modules/config/config.service';
-import { FilesModule } from './modules/files/files.module';
+import { FilesModule } from './modules/file/files.module';
 import { LevelModule } from './modules/level/level.module';
 import { SeedModule } from './modules/seed/seed.module';
 

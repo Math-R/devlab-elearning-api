@@ -9,7 +9,7 @@ import {
   JoinColumn, OneToMany, ManyToOne,
 } from 'typeorm';
 import { Exclude } from 'class-transformer';
-import { File } from '../files/file.entity';
+import { File } from '../file/file.entity';
 import { Profiler } from 'inspector';
 import { PasswordTransformer } from '../utils/password.transformer';
 import { Level } from '../level/level.entity';
@@ -33,6 +33,9 @@ export class User extends BaseEntity {
 
   @Column({ length: 255 })
   email: string;
+
+  @Column({default : 0})
+  admin: boolean;
 
   @Column({
     select: false,

@@ -49,6 +49,7 @@ export class SeedsService {
     user.username = 'glrd';
     user.description = 'Hi Im glrd';
     user.password = 'password';
+    user.admin = true;
     user.level = await this.levelRepository.findOne({ where: { id: 1 } });
     await user.save();
     users.push(user);
