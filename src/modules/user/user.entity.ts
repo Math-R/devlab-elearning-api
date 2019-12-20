@@ -9,6 +9,7 @@ import {
   JoinColumn, OneToMany,
 } from 'typeorm';
 import { Exclude } from 'class-transformer';
+import { File } from '../files/file.entity';
 import { Profiler } from 'inspector';
 import { PasswordTransformer } from '../utils/password.transformer';
 
@@ -23,7 +24,7 @@ export class User extends BaseEntity {
   username: string;
 
   @Column({ length: 1000, nullable: true })
-  content: string;
+  description: string;
 
   @Column({ length: 255 })
   email: string;
@@ -42,4 +43,7 @@ export class User extends BaseEntity {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @OneToMany(type => File, file => file.user)
+  files: File[];
 }

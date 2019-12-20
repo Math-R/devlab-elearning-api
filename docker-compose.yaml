@@ -8,12 +8,10 @@ services:
     build:
       context: ./
     container_name: elearning-api
-    working_dir: '/elearning'
-    command: bash -c 'pm2-runtime start ecosystem.config.js -i max'
     environment:
       - APP_PORT=3000
     ports:
-      - "3000:3000"
+      - "3002:3000"
 
   elearning_mysql:
     image: "mysql:5.7"

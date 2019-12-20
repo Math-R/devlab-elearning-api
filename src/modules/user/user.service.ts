@@ -50,7 +50,7 @@ export class UserService {
     const userModel = new User();
     userModel.email = payload.email;
     userModel.username = payload.username;
-    userModel.content = payload.description ? payload.description : null;
+    userModel.description = payload.description ? payload.description : null;
     userModel.password = payload.password;
     await userModel.save();
     return userModel;
@@ -77,7 +77,7 @@ export class UserService {
 
     user.username = payload.username;
     user.email = payload.email;
-    user.content = payload.description;
+    user.description = payload.description;
     await user.save();
     return user;
   }

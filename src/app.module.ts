@@ -5,6 +5,8 @@ import { AdminModule } from './modules/admin/admin.module';
 import { ConfigModule } from './modules/config/config.module';
 import { TypeOrmModule, TypeOrmModuleAsyncOptions } from '@nestjs/typeorm';
 import { ConfigService } from './modules/config/config.service';
+import { FilesModule } from './modules/files/files.module';
+import { LevelModule } from './modules/level/level.module';
 
 @Module({
   imports: [
@@ -36,6 +38,8 @@ import { ConfigService } from './modules/config/config.service';
     AuthModule,
     UserModule,
     AdminModule,
+    FilesModule,
+    LevelModule,
   ],
 })
 export class AppModule {
