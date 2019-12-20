@@ -16,6 +16,8 @@ services:
   elearning_mysql:
     image: "mysql:5.7"
     container_name: elearning_mysql
+    ports:
+    - "3310:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=elearning-db

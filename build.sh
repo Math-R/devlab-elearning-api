@@ -1,4 +1,3 @@
 #WIP
 
-
-docker build -t elearning-api:1.0. .
+docker build -t elearning-api: .
