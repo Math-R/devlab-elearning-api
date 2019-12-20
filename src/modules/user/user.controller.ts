@@ -8,7 +8,7 @@ export class UserController {
   @Get('')
   async index(@Res()  res) {
     return res.send({
-      message: 'ok',
+      status: 'running',
     });
   }
 }

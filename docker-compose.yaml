@@ -1,0 +1,21 @@
+#WIP
+version: '3.5'
+services:
+
+  elearning-api:
+    image: elearning/elearning-api
+    restart: always
+    build:
+      context: ./
+    container_name: elearning-api
+    environment:
+      - APP_PORT=3000
+    ports:
+      - "3002:3000"
+
+  elearning_mysql:
+    image: "mysql:5.7"
+    container_name: elearning_mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=elearning-db
