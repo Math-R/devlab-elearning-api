@@ -12,6 +12,7 @@ import { Exclude } from 'class-transformer';
 import { File } from '../files/file.entity';
 import { Profiler } from 'inspector';
 import { PasswordTransformer } from '../utils/password.transformer';
+import { Level } from '../level/level.entity';
 
 @Entity({
   name: 'users',
@@ -22,6 +23,10 @@ export class User extends BaseEntity {
 
   @Column({ length: 255 })
   username: string;
+
+  @OneToOne(type => Level)
+  @JoinColumn({name: 'fk_level_id'})
+  level: Level;
 
   @Column({ length: 1000, nullable: true })
   description: string;

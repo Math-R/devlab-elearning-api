@@ -10,9 +10,9 @@ import {
 import { User } from '../user/user.entity';
 
 @Entity({
-  name: 'files',
+  name: 'cms_levels',
 })
-export class File extends BaseEntity {
+export class Level extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

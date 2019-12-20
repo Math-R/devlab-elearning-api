@@ -8,6 +8,8 @@ services:
     build:
       context: ./
     container_name: elearning-api
+    links:
+      - elearning_mysql
     environment:
       - APP_PORT=3000
     ports:
