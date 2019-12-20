@@ -1,1 +1,23 @@
 #WIP
+version: '3.5'
+services:
+
+  elearning-api:
+    image: elearning/elearning-api
+    restart: always
+    build:
+      context: ./
+    container_name: elearning-api
+    working_dir: '/elearning'
+    command: bash -c 'pm2-runtime start ecosystem.config.js -i max'
+    environment:
+      - APP_PORT=3000
+    ports:
+      - "3000:3000"
+
+  elearning_mysql:
+    image: "mysql:5.7"
+    container_name: elearning_mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=elearning-db
