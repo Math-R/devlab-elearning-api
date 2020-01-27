@@ -7,6 +7,9 @@ import { ConfigService } from './modules/config/config.service';
 import { FilesModule } from './modules/file/files.module';
 import { LevelModule } from './modules/level/level.module';
 import { SeedModule } from './modules/seed/seed.module';
+import { CourseModule } from './modules/course/course.module';
+import { ChapterModule } from './modules/chapter/chapter.module';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -40,7 +43,10 @@ import { SeedModule } from './modules/seed/seed.module';
     FilesModule,
     LevelModule,
     SeedModule,
+    CourseModule,
+    ChapterModule,
   ],
+  controllers: [AppController],
 })
 export class AppModule {
 }

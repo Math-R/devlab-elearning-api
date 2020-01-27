@@ -8,6 +8,7 @@ import {
   JoinColumn, ManyToOne,
 } from 'typeorm';
 import { User } from '../user/user.entity';
+import { Course } from '../course/course.entity';
 
 @Entity({
   name: 'files',
@@ -31,6 +32,10 @@ export class File extends BaseEntity {
   @ManyToOne(type => User, user => user.files)
   @JoinColumn({ name: 'fk_user_id' })
   user: User;
+
+  @ManyToOne(type => Course, course => course.files)
+  @JoinColumn({ name: 'fk_course_id' })
+  course: Course;
 
   @CreateDateColumn()
   createdAt: Date;

@@ -12,6 +12,7 @@ import { JwtStrategy } from './utils/jwt.strategy';
   imports: [
     ConfigModule,
     UserModule,
+    Logger,
     PassportModule.register({ defaultStrategy: 'jwt', session: true }),
     JwtModule.registerAsync({
       imports: [ConfigModule],

@@ -5,6 +5,8 @@ import { randomBytes } from 'crypto';
 import { User } from '../user/user.entity';
 import { Level } from '../level/level.entity';
 import slugify from 'slugify';
+import { Course } from '../course/course.entity';
+import { Chapter } from '../chapter/chapter.entity';
 
 @Injectable()
 export class SeedsService {
@@ -29,6 +31,9 @@ export class SeedsService {
 
     const users = await this.seedUser();
     this.logger.debug('Successfuly completed seeding users...');
+
+    const courses = await this.seedCourse();
+    this.logger.debug('Successfuly completed seeding courses...');
 
   }
 
@@ -88,6 +93,33 @@ export class SeedsService {
         lower: true,         // result in lower case
       });
       await level.save();
+    }
+  }
+
+  private async seedCourse() {
+    const courses: Array<Course | null> = [];
+    const chaptersAll: Array<Chapter | null> = [];
+    const chapters: Array<Chapter | null> = [];
+    for (let i = 1; i < 50; i++) {
+      const course = new Course();
+      course.title = 'Titre du cours ' + i;
+      course.description = 'Description du cours = ' + i;
+      course.slug = slugify('Titre du cours ' + i);
+      await course.save();
+      courses.push(course);
+      for (let a = 1; a < 3; a++) {
+        const chapter = new Chapter();
+        chapter.course = course;
+        chapter.title = 'Chapitre ' + a + i;
+        chapter.description = 'Description du chapitre = ' + a + i;
+        chapter.slug = slugify('Chapitre ' + a + i);
+        await chapter.save();
+        chapters.push(chapter);
+        chaptersAll.push(chapter);
+
+      }
+      course.chapters = chapters;
+      await course.save();
     }
   }
 }

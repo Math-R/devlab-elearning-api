@@ -6,46 +6,34 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToOne,
-  JoinColumn, OneToMany, ManyToOne, JoinTable, ManyToMany,
+  JoinColumn, OneToMany, ManyToOne,
 } from 'typeorm';
 import { Exclude } from 'class-transformer';
 import { File } from '../file/file.entity';
 import { Profiler } from 'inspector';
 import { PasswordTransformer } from '../utils/password.transformer';
 import { Level } from '../level/level.entity';
-import { Course } from '../course/course.entity';
+import { Chapter } from '../chapter/chapter.entity';
+import { User } from '../user/user.entity';
 
 @Entity({
-  name: 'users',
+  name: 'courses',
 })
-export class User extends BaseEntity {
+export class Course extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ length: 255 })
-  username: string;
+  title: string;
 
-  @ManyToOne(type => Level, level => level.users)
-  @JoinColumn()
-  level: Level;
+  @Column({ unique: true, length: 255 })
+  slug: string;
 
   @Column({ length: 1000, nullable: true })
   description: string;
 
-  @Column({ length: 255 })
-  email: string;
-
-  @Column({ default: 0 })
-  admin: boolean;
-
-  @Column({
-    select: false,
-    name: 'password',
-    length: 255,
-    transformer: new PasswordTransformer(),
-  })
-  @Exclude()
-  password: string;
+  @OneToMany(type => Chapter, chapter => chapter.course)
+  chapters: Chapter[];
 
   @CreateDateColumn()
   createdAt: Date;
@@ -53,10 +41,10 @@ export class User extends BaseEntity {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @OneToMany(type => File, file => file.user)
+  @OneToMany(type => File, file => file.course)
   files: File[];
 
-  @ManyToMany(type => Course)
-  @JoinTable()
-  courses: Course[];
+
+
+
 }

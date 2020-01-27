@@ -96,4 +96,7 @@ export class UserService {
     };
   }
 
+  async getCurrent(request: any) {
+    return await  this.findId(request.user.id);
+  }
 }
