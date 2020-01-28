@@ -32,6 +32,9 @@ export class Course extends BaseEntity {
   @Column({ length: 1000, nullable: true })
   description: string;
 
+  @Column({ nullable: true })
+  estimatedTime: number;
+
   @OneToMany(type => Chapter, chapter => chapter.course)
   chapters: Chapter[];
 

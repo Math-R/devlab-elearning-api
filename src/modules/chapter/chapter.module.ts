@@ -1,4 +1,7 @@
 import { Module } from '@nestjs/common';
+import { ChapterController } from './chapter.controller';
 
-@Module({})
+@Module({
+  controllers: [ChapterController]
+})
 export class ChapterModule {}

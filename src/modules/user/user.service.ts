@@ -30,7 +30,7 @@ export class UserService {
     });
   }
 
-  async findId(id: number, relation?: [string]) {
+  async findId(id: number, relation?) {
     return this.userRepository.findOne({ where: { id }, relations: relation });
   }
 

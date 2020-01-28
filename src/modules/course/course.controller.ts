@@ -1,12 +1,13 @@
-import { Controller, Get, Param, Req, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Req, Res, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiUseTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { UserRessource } from '../user/user.ressource';
 import { CourseService } from './course.service';
 import { UserService } from '../user/user.service';
+import { CreateCourseValidator } from './validator/CreateCourseValidator';
 
 @ApiUseTags('course')
-@Controller('course')
+@Controller('courses')
 export class CourseController {
 
   constructor(private courseService : CourseService, private userService: UserService) {
@@ -45,6 +46,18 @@ export class CourseController {
       data: courses,
     });
   }
+
+  @ApiBearerAuth()
+  @UseGuards(AuthGuard('jwt'))
+  @Post('choose')
+  async create(@Res() res, @Req() request, @Body() coursePayload : CreateCourseValidator) {
+    const course = await this.courseService.store(coursePayload);
+    return res.send({
+      data: course,
+    });
+  }
+
+
 
 
 

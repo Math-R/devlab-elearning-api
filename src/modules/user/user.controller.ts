@@ -15,7 +15,7 @@ export class UserController {
   @UseGuards(AuthGuard('jwt'))
   @Get('profile')
   async profile(@Res() res, @Req() request) {
-    const user = await this.userService.findId(request.user.id, ['level']);
+    const user = await this.userService.findId(request.user.id, ['level', 'courses']);
     return res.send({
       data: UserRessource.toArray(user),
     });
