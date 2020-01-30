@@ -14,6 +14,8 @@ import { Profiler } from 'inspector';
 import { PasswordTransformer } from '../utils/password.transformer';
 import { Level } from '../level/level.entity';
 import { Course } from '../course/course.entity';
+import { TasksModule } from '../task/tasks.module';
+import { Task } from '../task/task.entity';
 
 @Entity({
   name: 'chapters',
@@ -33,6 +35,9 @@ export class Chapter extends BaseEntity {
 
   @ManyToOne(type => Course, course => course.chapters)
   course: Course;
+
+  @OneToMany(type => Task, task => task.chapter)
+  tasks: Task[];
 
   @CreateDateColumn()
   createdAt: Date;

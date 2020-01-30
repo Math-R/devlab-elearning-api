@@ -42,13 +42,13 @@ export class CourseService {
     course.description = coursePayload.description;
     course.estimatedTime = coursePayload.estimatedTime;
     await coursePayload.files.forEach((e, i, course)  => {
-      this.fileService.find(e.id).then(e => {
-        getConnection()
-          .createQueryBuilder()
-          .relation(Course, 'files')
-          .of(course)
-          .add(e);
-      });
+      // this.fileService.find(e.id).then(e => {
+      //   getConnection()
+      //     .createQueryBuilder()
+      //     .relation(Course, 'files')
+      //     .of(course)
+      //     .add(e);
+      // });
 
     });
     await course.save();

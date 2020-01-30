@@ -8,11 +8,12 @@ import {
   JoinColumn, ManyToOne,
 } from 'typeorm';
 import { User } from '../user/user.entity';
+import { Chapter } from '../chapter/chapter.entity';
 
 @Entity({
   name: 'tasks',
 })
-export class File extends BaseEntity {
+export class Task extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
